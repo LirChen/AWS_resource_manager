@@ -27,29 +27,29 @@ Your AWS user/role needs the following permissions:
 
 ### Local Development
 
-1. **Install Git (if not already installed):**
+1. **Install Git and Python (if not already installed):**
    
    **Windows:**
-   - Download from [git-scm.com](https://git-scm.com/download/win)
-   - Or use package manager: `winget install Git.Git`
+   - Git: Download from [git-scm.com](https://git-scm.com/download/win) or `winget install Git.Git`
+   - Python: Download from [python.org](https://www.python.org/downloads/) or `winget install Python.Python.3`
    
    **macOS:**
    ```bash
    # Using Homebrew:
-   brew install git
+   brew install git python
    
-   # Or download from: https://git-scm.com/download/mac
+   # Or download from official sites
    ```
    
    **Linux:**
    ```bash
    # Ubuntu/Debian:
-   sudo apt install git
+   sudo apt install git python3 python3-pip
    
    # CentOS/RHEL/Fedora:
-   sudo yum install git
+   sudo yum install git python3 python3-pip
    # or
-   sudo dnf install git
+   sudo dnf install git python3 python3-pip
    ```
 
 2. **Clone the repository:**
@@ -61,6 +61,8 @@ Your AWS user/role needs the following permissions:
 3. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
+   # On Linux/macOS you might need:
+   pip3 install -r requirements.txt
    ```
 
 4. **Configure AWS credentials:** (see AWS Environment Variables Setup below)
