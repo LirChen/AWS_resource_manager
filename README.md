@@ -25,18 +25,113 @@ Your AWS user/role needs the following permissions:
 
 ## Installation
 
-1. **Clone the repository:**
+### Local Development
+
+1. **Install Git (if not already installed):**
+   
+   **Windows:**
+   - Download from [git-scm.com](https://git-scm.com/download/win)
+   - Or use package manager: `winget install Git.Git`
+   
+   **macOS:**
+   ```bash
+   # Using Homebrew:
+   brew install git
+   
+   # Or download from: https://git-scm.com/download/mac
+   ```
+   
+   **Linux:**
+   ```bash
+   # Ubuntu/Debian:
+   sudo apt install git
+   
+   # CentOS/RHEL/Fedora:
+   sudo yum install git
+   # or
+   sudo dnf install git
+   ```
+
+2. **Clone the repository:**
    ```bash
    git clone https://github.com/LirChen/AWS_resource_manager.git
    cd AWS_resource_manager
    ```
 
-2. **Install dependencies:**
+3. **Install dependencies:**
    ```bash
    pip install -r requirements.txt
    ```
 
-3. **Configure AWS credentials:**
+4. **Configure AWS credentials:** (see AWS Environment Variables Setup below)
+
+### AWS EC2 Instance Setup
+
+#### Amazon Linux
+
+1. **Update system and install prerequisites:**
+   ```bash
+   sudo yum update -y
+   sudo yum install git python3-pip -y
+   ```
+
+2. **Clone the repository:**
+   ```bash
+   git clone https://github.com/LirChen/AWS_resource_manager.git
+   cd AWS_resource_manager
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip3 install -r requirements.txt
+   # If permission issues:
+   sudo pip3 install -r requirements.txt
+   ```
+
+4. **Configure AWS credentials:**
+   ```bash
+   export AWS_ACCESS_KEY_ID="YOUR_ACCESS_KEY"
+   export AWS_SECRET_ACCESS_KEY="YOUR_SECRET_KEY"
+   export AWS_DEFAULT_REGION="us-east-1"
+   ```
+
+5. **Test the installation:**
+   ```bash
+   python3 Manager.py --help
+   ```
+
+#### Ubuntu
+
+1. **Update system and install prerequisites:**
+   ```bash
+   sudo apt update
+   sudo apt install git python3-pip -y
+   ```
+
+2. **Clone the repository:**
+   ```bash
+   git clone https://github.com/LirChen/AWS_resource_manager.git
+   cd AWS_resource_manager
+   ```
+
+3. **Install dependencies:**
+   ```bash
+   pip3 install -r requirements.txt
+   # If permission issues:
+   sudo pip3 install -r requirements.txt
+   ```
+
+4. **Configure AWS credentials:**
+   ```bash
+   export AWS_ACCESS_KEY_ID="YOUR_ACCESS_KEY"
+   export AWS_SECRET_ACCESS_KEY="YOUR_SECRET_KEY"
+   export AWS_DEFAULT_REGION="us-east-1"
+   ```
+
+5. **Test the installation:**
+   ```bash
+   python3 Manager.py --help
+   ```
 
 ## AWS Environment Variables Setup
 
@@ -88,9 +183,10 @@ $env:AWS_DEFAULT_REGION = "us-east-1"
 Check that they are set:
 ```powershell
 echo $env:AWS_ACCESS_KEY_ID
-echo $env:AWS_SECRET_ACCESS_KEY
-echo $env:AWS_DEFAULT_REGION
-```
+**Important Notes for EC2:**
+- Use `python3` and `pip3` instead of `python` and `pip`
+- Default users: `ec2-user` for Amazon Linux, `ubuntu` for Ubuntu
+- If you get permission errors with pip, use `sudo`
 
 ### Verification
 
